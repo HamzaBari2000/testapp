@@ -1,42 +1,105 @@
-<template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+<template> 
+  <main>
+    <div v-for="lesson in lessons" :key="lesson.SubjectName">
+      <h1>Subject Name: {{lesson.SubjectName}}</h1>
+      <h2>Location: {{lesson.Location}}</h2>
+      <h3>Price: {{lesson.Price}}</h3>
+      <h4>Space: {{lesson.Space}}</h4>
+      <figure>
+        <img v-bind:src="lesson.Image" height="100" width="100" />
+      </figure>
+      <button @click="addLesson(lesson)">Add to cart</button>
+    </div>
+  </main>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
-}
+  },
+  data() {
+    return{
+      lessons: [
+        {
+          SubjectName: "Maths",
+          Location: "London",
+          Price: 50.0,
+          Space: 5,
+          Image: "maths.svg",
+        },
+        {
+          SubjectName: "English",
+          Location: "Manchester",
+          Price: 30.0,
+          Space: 5,
+          Image: "english.png",
+        },
+        {
+          SubjectName: "Science",
+          Location: "New York",
+          Price: 75.0,
+          Space: 5,
+          Image: "science.png",
+        },
+        {
+          SubjectName: "Computer Science",
+          Location: "Birmingham",
+          Price: 100.0,
+          Space: 5,
+          Image: "cs.jpg",
+        },
+        {
+          SubjectName: "History",
+          Location: "London",
+          Price: 85.0,
+          Space: 5,
+          Image: "history.png",
+        },
+        {
+          SubjectName: "Geography",
+          Location: "New York",
+          Price: 85.0,
+          Space: 5,
+          Image: "geography.png",
+        },
+        {
+          SubjectName: "Religious Education",
+          Location: "Leeds",
+          Price: 80.0,
+          Space: 5,
+          Image: "Re.png",
+        },
+        {
+          SubjectName: "Phyical Education",
+          Location: "Reading",
+          Price: 110.0,
+          Space: 5,
+          Image: "PhyicalEducation.png",
+        },
+        {
+          SubjectName: "Business",
+          Location: "Cape Town",
+          Price: 145.0,
+          Space: 5,
+          Image: "business.png",
+        },
+        {
+          SubjectName: "Information Technology",
+          Location: "Amsterdam",
+          Price: 25.0,
+          Space: 5,
+          Image: "IT.png",
+        },
+      ],
+    }
+  },
+  methods: {
+    addLesson(lesson) {
+        this.$emit('addLesson', lesson);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
