@@ -21,7 +21,7 @@
       <div id="cart-page" v-else>
         <!--Switching to the Cart Page-->
         <!--Displaying The Checkout (add the component below here)-->
-          <CartAndCheckout :cart="cart" @removeFromCart='removeLesson()'></CartAndCheckout>
+          <CartAndCheckout :cart="cart" @removeFromCart='removeLesson'></CartAndCheckout>
       </div>
     </main>
   </div>
@@ -63,9 +63,10 @@ export default {
     },
     removeLesson(cart) {
       const index = this.cart.indexOf(cart);    //Finds the index of the Cart Array. 
-        if (index !== -1) { //If index of the cart array is not equal value or equal type. 
-          this.cart.splice(index, 1);   //Splice is used to remove that index. 
-        }
+      if (index !== -1) { //If index of the cart array is not equal value or equal type. 
+        this.cart.splice(index, 1);   //Splice is used to remove that index. 
+      } 
+      
     },
     showCart() {
       //Getting the Cart for displaying.
