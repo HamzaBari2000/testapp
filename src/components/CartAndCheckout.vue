@@ -5,7 +5,7 @@
 <template>
     <div>
         <center>
-            <h1>Cart</h1>
+            <h1>cart</h1>
         </center>
         <div id="display-cart" v-for='(lesson, index) in cart' :key="index">
             <!--cart is one elemnt of the displayLessonsCart Array-->
