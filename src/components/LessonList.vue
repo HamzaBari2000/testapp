@@ -4,11 +4,17 @@
 
 <template> 
   <main>
-    <div id="main" v-for="lesson in lessons" :key="lesson.SubjectName">
+    <div id="main" v-for="(lesson, index) in lessons" :key="index">
       <h1>Subject Name: {{lesson.SubjectName}}</h1>
       <h2>Location: {{lesson.Location}}</h2>
       <h3>Price: {{lesson.Price}}</h3>
       <h4>Space: {{lesson.Space}}</h4>
+      <span v-if='lesson.Space === 0'>
+        <h4>Spaces Full</h4>
+      </span>
+      <span v-else-if="lesson.Space - cartCount(lesson) < 5">
+        <h4>Available Spaces: {{lesson.Space - cartCount(lesson)}}</h4>
+      </span>
       <figure>
         <img v-bind:src="lesson.Image" height="100" width="100" />
       </figure>
@@ -102,7 +108,6 @@ export default {
     addLesson(lesson) {
         this.$emit('addLesson', lesson);
     },
-    
   },
 };
 </script>
