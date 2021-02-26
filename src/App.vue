@@ -66,6 +66,13 @@ export default {
       if (index !== -1) { //If index of the cart array is not equal value or equal type. 
         this.cart.splice(index, 1);   //Splice is used to remove that index. 
       } 
+
+      //This function will execute when cart == 0.
+      if (this.cart == 0) {
+        location.reload();
+        this.btnCart = false; //As the cart has 0 lessons the button will not be visible.
+        this.showLessonsPage = this.showLessonsPage ? false : true; //This will Automatticly chnage to the lesson webpage from the cart page.
+      }
       
     },
     showCart() {

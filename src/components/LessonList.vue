@@ -12,9 +12,6 @@
       <span v-if='lesson.Space === 0'>
         <h4>Spaces Full</h4>
       </span>
-      <span v-else-if="lesson.Space - cartCount(lesson) < 5">
-        <h4>Available Spaces: {{lesson.Space - cartCount(lesson)}}</h4>
-      </span>
       <figure>
         <img v-bind:src="lesson.Image" height="100" width="100" />
       </figure>
