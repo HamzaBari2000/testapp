@@ -4,6 +4,21 @@
 
 <template> 
   <main>
+    <div id="sort-section">
+      <h1>Sorting By:</h1>
+      <!--V-model - Sort will automatically pick up changes and update the data on screen-->
+      <select v-model="sort" v-on:change="sortLessons">
+        <!--Accroding to each value of the switch case it will execute that case/function and sort those subjects.-->
+        <option :value="1">Subject Name: A to Z</option>
+        <option :value="2">Subject Name: Z to A</option>
+        <option :value="3">Location: A to Z</option>
+        <option :value="4">Location: Z to A</option>
+        <option :value="5">Price: Cheap to Expensive</option>
+        <option :value="6">Price: Expensive to Cheap</option>
+        <option :value="7">Availability: High to Low</option>
+        <option :value="8">Availability: Low to High</option>
+      </select>
+    </div>
     <div id="main" v-for="(lesson, index) in lessons" :key="index">
       <h1>Subject Name: {{lesson.SubjectName}}</h1>
       <h2>Location: {{lesson.Location}}</h2>
@@ -27,6 +42,7 @@ export default {
   },
   data() {
     return {
+      sort: '',
       lessons: [
         {
           SubjectName: "Maths",
@@ -105,6 +121,32 @@ export default {
     addLesson(lesson) {
         this.$emit('addLesson', lesson);
     },
+    sortLessons() {
+      switch(this.sort) {
+        case 1:
+          this.lessons.sort((a, b) => {    //For High to Low
+            if (a.SubjectName > b.SubjectName) {    //If this statement is true then it will return 1.
+              return 1;
+            } else if (a.SubjectName < b.SubjectName) { //If this statement is true then it will return -1
+              return -1;
+            } else {
+              return 0;   //Else it just returns 0. 
+            }
+          })
+        break;
+        case 2:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.SubjectName > b.SubjectName) {
+              return -1;
+            } else if (a.SubjectName < b.SubjectName) {
+              return 1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+      }
+    }
   },
 };
 </script>
