@@ -22,7 +22,7 @@
     <div id="main" v-for="(lesson, index) in lessons" :key="index">
       <h1>Subject Name: {{lesson.SubjectName}}</h1>
       <h2>Location: {{lesson.Location}}</h2>
-      <h3>Price: {{lesson.Price}}</h3>
+      <h3>Price: £{{lesson.Price}}</h3>
       <h4>Space: {{lesson.Space}}</h4>
       <span v-if='lesson.Space === 0'>
         <h4>Spaces Full</h4>
@@ -139,6 +139,72 @@ export default {
             if (a.SubjectName > b.SubjectName) {
               return -1;
             } else if (a.SubjectName < b.SubjectName) {
+              return 1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 3:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Location > b.Location) {
+              return 1;
+            } else if (a.Location < b.Location) {
+              return -1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 4:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Location > b.Location) {
+              return -1;
+            } else if (a.Location < b.Location) {
+              return 1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 5:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Price > b.Price) {
+              return 1;
+            } else if (a.Price < b.Price) {
+              return -1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 6:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Price > b.Price) {
+              return -1;
+            } else if (a.Price < b.Price) {
+              return 1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 7:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Space > b.Space) {
+              return 1;
+            } else if (a.Space < b.Space) {
+              return -1;
+            } else {
+              return 0;
+            }
+          })
+        break;
+        case 8:
+          this.lessons.sort((a, b) => {    //For Low to High
+            if (a.Space > b.Space) {
+              return -1;
+            } else if (a.Space < b.Space) {
               return 1;
             } else {
               return 0;
