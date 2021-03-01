@@ -23,14 +23,11 @@
       <h1>Subject Name: {{lesson.SubjectName}}</h1>
       <h2>Location: {{lesson.Location}}</h2>
       <h3>Price: £{{lesson.Price}}</h3>
-      <h4>Space: {{lesson.Space}}</h4>
-      <span v-if='lesson.Space === 0'>
-        <h4>Spaces Full</h4>
-      </span>
+      <h4 id="Space">Space: {{lesson.Space}}</h4>
       <figure>
         <img v-bind:src="lesson.Image" height="100" width="100" />
       </figure>
-      <button @click="addLesson(lesson)">Add to cart</button>
+      <button id="add" @click="addLesson(lesson), reduce(index)">Add to cart</button>
     </div>
   </main>
 </template>
@@ -212,6 +209,13 @@ export default {
           })
         break;
       }
+    },
+    reduce(index) {
+      this.lessons[index].Space--;
+      if (this.lessons[index].Space == 0) {
+        document.getElementById("Space").innerHTML = "<h4>Spaces Full</h4>"
+        document.getElementById("add").style.visibility = "hidden";
+      } 
     }
   },
 };
